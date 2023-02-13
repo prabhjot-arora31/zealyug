@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "569087645785",
+    "project_id": "zealyug-firebase",
+    "storage_bucket": "zealyug-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569087645785:android:5c70ea4ccd3bdf9776b948",
+        "android_client_info": {
+          "package_name": "com.example.zealyug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569087645785-9pjgh1vta4554aj5kl19t83o3ol4k8b9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxed5Bfr_E-ulJN07cJ9wRBnAt49Lr3qo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569087645785-9pjgh1vta4554aj5kl19t83o3ol4k8b9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

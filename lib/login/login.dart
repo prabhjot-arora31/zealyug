@@ -4,8 +4,19 @@ import 'package:zealyug/login/login.dart';
 import 'package:zealyug/otp_page/otp.dart';
 import 'package:zealyug/signup/signup.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  bool isAPICallProcess = false;
+  bool hidePassword = true;
+  GlobalKey<FormState> globalKey = GlobalKey<FormState>();
+  String? username;
+  String? password;
 
   @override
   Widget build(BuildContext context) {

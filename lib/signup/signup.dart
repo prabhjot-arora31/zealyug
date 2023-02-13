@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zealyug/home/home.dart';
-import 'package:zealyug/login/login.dart';
+import 'package:zealyug/login/login_real.dart';
 import 'package:zealyug/otp_page/otp.dart';
 
 class SignUp extends StatelessWidget {
