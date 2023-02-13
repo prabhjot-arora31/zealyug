@@ -27,7 +27,7 @@ class _SignupTestState extends State<SignupTest> {
   @override
   Widget build(BuildContext context) {
     const unSuccessSnackbar = SnackBar(
-      backgroundColor: Colors.red,
+      backgroundColor: Color.fromARGB(255, 237, 25, 10),
       content: Text("Registration unsuccessful"),
     );
     const SuccessSnackbar = SnackBar(
