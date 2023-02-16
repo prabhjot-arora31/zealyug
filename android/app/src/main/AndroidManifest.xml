@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zealyug">
+    <uses-permission android:name="android.permision.INTERNET" />
+    <uses-permission android:name="android.permision.ACCESS_NETWORK_STATE" />
    <application
         android:label="zealyug"
         android:name="${applicationName}"
