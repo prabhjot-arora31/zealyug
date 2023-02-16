@@ -21,7 +21,7 @@ class SignUp extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
-                      const BoxShadow(
+                      BoxShadow(
                           color: Color.fromRGBO(3, 1, 2, 1),
                           offset: Offset(15, 15),
                           blurRadius: 7),
@@ -34,7 +34,7 @@ class SignUp extends StatelessWidget {
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text(
+                      Text(
                         "Sign Up",
                         style: TextStyle(
                           letterSpacing: 2,

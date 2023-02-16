@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
-                      const BoxShadow(
+                      BoxShadow(
                           color: Color.fromRGBO(3, 1, 2, 1),
                           offset: Offset(15, 15),
                           blurRadius: 7),
@@ -52,9 +52,10 @@ class _LoginState extends State<Login> {
                           letterSpacing: 2,
                           shadows: [
                             Shadow(
-                                blurRadius: 10,
-                                color: Color.fromRGBO(3, 1, 2, 1),
-                                offset: Offset(4, 3)),
+                              blurRadius: 10,
+                              color: Color.fromRGBO(3, 1, 2, 1),
+                              // offset: Offset(4, 3),
+                            ),
                           ],
                           color: Color.fromRGBO(3, 1, 2, 1),
                           fontSize: 25,

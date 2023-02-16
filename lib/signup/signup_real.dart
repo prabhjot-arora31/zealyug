@@ -53,6 +53,7 @@ class _SignupState extends State<Signup> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: HexColor("#283B71"),
+        // backgroundColor: Colors.white,
         body: ProgressHUD(
           inAsyncCall: isAPICallprocess,
           opacity: 0.3,
@@ -92,6 +93,10 @@ class _SignupState extends State<Signup> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                       ),
+                      // child: Text(
+                      //   "Logo Image",
+                      //   style: TextStyle(color: Colors.black),
+                      // )
                       child: Image.asset(
                         "assets/images/zealyug_logo_update.jpg",
                         fit: BoxFit.contain,
@@ -118,12 +123,16 @@ class _SignupState extends State<Signup> {
                     ),
                     TextField(
                       controller: _nameController,
-                      style: TextStyle(color: Colors.blue),
+                      // style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: "Enter Name",
                         hintStyle: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.white,
                           fontSize: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white, width: 2),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
@@ -161,12 +170,16 @@ class _SignupState extends State<Signup> {
                     ),
                     TextField(
                       controller: _emailController,
-                      style: TextStyle(color: Colors.blue),
+                      // style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: "Enter Email",
                         hintStyle: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.white,
                           fontSize: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white, width: 2),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
@@ -193,15 +206,19 @@ class _SignupState extends State<Signup> {
                     ),
                     TextField(
                       controller: _passwordController,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: "Enter Password",
                         hintStyle: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.white,
                           fontSize: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white, width: 2),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
+
                           // borderSide: BorderSide.merge(
                           //   BorderSide(),
                           //   BorderSide(),
@@ -242,7 +259,6 @@ class _SignupState extends State<Signup> {
                       // body: JsonCodec(
                       //   Uri.parse(api),
                       // ),
-                      ;
                       print(res.toString());
                     },
                         btnColor: HexColor("#283B71"),
