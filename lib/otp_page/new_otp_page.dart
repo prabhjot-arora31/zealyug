@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:zealyug/otp_page/new_otp_page.dart';
+import 'package:zealyug/jobType/jobType.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class OTP extends StatefulWidget {
+  const OTP({Key? key}) : super(key: key);
 
   @override
-  _SignUpState createState() => _SignUpState();
+  _OTPState createState() => _OTPState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _OTPState extends State<OTP> {
   bool _rememberMe = false;
   bool _showPassword = false;
 
@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: size.height / 25),
               Text(
-                'Create New Account',
+                'Enter the received OTP',
                 style: TextStyle(
                   fontSize: size.width / 14,
                   fontWeight: FontWeight.bold,
@@ -50,7 +50,7 @@ class _SignUpState extends State<SignUp> {
                 width: size.width / 1.15,
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: 'Phone',
+                    hintText: 'Otp',
                     contentPadding: const EdgeInsets.symmetric(vertical: 18),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
@@ -84,7 +84,7 @@ class _SignUpState extends State<SignUp> {
                 height: size.height / 16,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (ctx)=>OTP()));
+                    Navigator.push(context, MaterialPageRoute(builder: (ctx) => jobType()));
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

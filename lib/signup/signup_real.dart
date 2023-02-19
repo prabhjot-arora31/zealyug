@@ -8,8 +8,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:zealyug/home/home.dart';
-import 'package:zealyug/login/login_real.dart';
-import 'package:zealyug/login/login_real.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -278,10 +276,10 @@ class _SignupState extends State<Signup> {
                       height: 15,
                     ),
                     GestureDetector(
-                      onTap: () => {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (ctx) => Login()))
-                      },
+                      // onTap: () => {
+                      //   Navigator.push(context,
+                      //       MaterialPageRoute(builder: (ctx) => Login()))
+                      // },
                       child: Text(
                         "Sign In",
                         style: TextStyle(

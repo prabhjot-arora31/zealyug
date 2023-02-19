@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zealyug/signup/new_sign_up.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   bool _rememberMe = false;
   bool _showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -213,51 +215,63 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    height: size.height / 16,
-                    width: size.width / 5.5,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Colors.grey.shade200, width: 1),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Center(
-                        child: Image.asset('assets/images/google.png'),
+                  GestureDetector(
+                    onTap: () {
+                      print("Google sign in");
+                    },
+                    child: Container(
+                      height: size.height / 16,
+                      width: size.width / 5.5,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        border:
+                            Border.all(color: Colors.grey.shade200, width: 1),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Center(
+                          child: Image.asset('assets/images/google.png'),
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: size.height / 16,
-                    width: size.width / 5.5,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey.shade200, width: 1),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Center(
-                        child: Image.asset('assets/images/apple.png'),
+                  GestureDetector(
+                    onTap: () {
+                      print("Apple sign in");
+                    },
+                    child: Container(
+                      height: size.height / 16,
+                      width: size.width / 5.5,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border:
+                            Border.all(color: Colors.grey.shade200, width: 1),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Center(
+                          child: Image.asset('assets/images/apple.png'),
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: size.height / 16,
-                    width: size.width / 5.5,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey.shade200, width: 1),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Center(
-                        child: Image.asset('assets/images/facebook.png'),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   height: size.height / 16,
+                  //   width: size.width / 5.5,
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.white,
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     border: Border.all(color: Colors.grey.shade200, width: 1),
+                  //   ),
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.all(12.0),
+                  //     child: Center(
+                  //       child: Image.asset('assets/images/facebook.png'),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(height: size.height / 20),
@@ -266,7 +280,9 @@ class _LoginState extends State<Login> {
                 children: [
                   const Text("Don't have an account? "),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+                    },
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
