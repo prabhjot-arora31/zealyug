@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:zealyug/signup/new_sign_up.dart';
 
+import 'package:zealyug/home/home.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -9,11 +12,21 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
   bool _rememberMe = false;
   bool _showPassword = false;
 
   @override
   Widget build(BuildContext context) {
+    const unSuccessSnackbar = SnackBar(
+      backgroundColor: Colors.red,
+      content: Text("Login unsuccessful"),
+    );
+    const SuccessSnackbar = SnackBar(
+      backgroundColor: Colors.green,
+      content: Text("Login Successful"),
+    );
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -49,6 +62,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: size.width / 1.15,
                 child: TextFormField(
+                controller: _emailController,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     contentPadding: const EdgeInsets.symmetric(vertical: 18),
@@ -81,6 +95,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: size.width / 1.15,
                 child: TextFormField(
+                  controller: _passwordController,
                   obscureText: !_showPassword,
                   decoration: InputDecoration(
                     hintText: 'Password',
@@ -163,7 +178,34 @@ class _LoginState extends State<Login> {
                 width: size.width / 1.2,
                 height: size.height / 16,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    String api = "https://jealous-plum-twill.cyclic.app/api/login";
+                    var res = await http.post(
+                      Uri.parse(api),
+                      headers: {'Content-Type': 'application/json'},
+                      body: jsonEncode({
+                        'email': _emailController.text,
+                        'password': _passwordController.text,
+                      }),
+                    );
+                    CircularProgressIndicator(color: Colors.blue,);
+                    if (res.statusCode == 200) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SuccessSnackbar);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (ctx) => Home()));
+                      print("Login successful");
+                    } else {
+                      print("Login unsuccessfull");
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(unSuccessSnackbar);
+                    }
+                    ;
+                    // body: JsonCodec(
+                    //   Uri.parse(api),
+                    // ),
+                    print(res.toString());
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(100),

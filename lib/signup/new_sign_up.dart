@@ -14,6 +14,8 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    String api = "http://localhost:192.168.153.1//api/login";
+    var res;
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
