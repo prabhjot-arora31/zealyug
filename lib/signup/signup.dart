@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zealyug/home/home.dart';
-import 'package:zealyug/login/login_real.dart';
+import 'package:zealyug/login/login.dart';
 import 'package:zealyug/otp_page/otp.dart';
 
 class SignUp extends StatelessWidget {
@@ -20,7 +19,7 @@ class SignUp extends StatelessWidget {
             Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Color.fromRGBO(3, 1, 2, 1),
                           offset: Offset(15, 15),
@@ -34,7 +33,7 @@ class SignUp extends StatelessWidget {
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
+                      const Text(
                         "Sign Up",
                         style: TextStyle(
                           letterSpacing: 2,
@@ -54,9 +53,9 @@ class SignUp extends StatelessWidget {
                       ),
                       const TextField(
                         keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: "Enter your mobile number",
-                          hintStyle: const TextStyle(
+                          hintStyle: TextStyle(
                               color: Color.fromRGBO(3, 1, 2, 1),
                               letterSpacing: 1),
                         ),
@@ -76,10 +75,10 @@ class SignUp extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             // color: Colors.blue,
-                            color: Color.fromRGBO(3, 1, 2, 1),
+                            color: const Color.fromRGBO(3, 1, 2, 1),
                           ),
                           child: const Center(
-                            child: const Text(
+                            child: Text(
                               "Sign Up",
                               style: TextStyle(
                                   color: Colors.white,
@@ -95,7 +94,7 @@ class SignUp extends StatelessWidget {
                       RichText(
                         text: const TextSpan(
                           text: "Already have an account?",
-                          style: const TextStyle(
+                          style: TextStyle(
                             letterSpacing: 1,
                             color: Color.fromRGBO(3, 1, 2, 1),
                             fontSize: 15,
@@ -107,12 +106,14 @@ class SignUp extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () => {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (ctx) => Login()))
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (ctx) => const Login()))
                         },
-                        child: Text(
+                        child: const Text(
                           "Sign In",
-                          style: const TextStyle(
+                          style: TextStyle(
                             letterSpacing: 1,
                             color: Color.fromRGBO(3, 1, 2, 1),
                             fontSize: 13,

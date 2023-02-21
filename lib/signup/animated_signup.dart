@@ -3,7 +3,8 @@ import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
 import 'package:snippet_coder_utils/hex_color.dart';
 import 'package:zealyug/home/home.dart';
-import 'package:zealyug/login/login_real.dart';
+
+import '../login/login.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);

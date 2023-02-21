@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zealyug/signup/new_sign_up.dart';
+import 'package:zealyug/signup/sign_up_test.dart';
+import 'package:zealyug/signup/signup.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -266,7 +269,13 @@ class _LoginState extends State<Login> {
                 children: [
                   const Text("Don't have an account? "),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupTest()),
+                      );
+                    },
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
