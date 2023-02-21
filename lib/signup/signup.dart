@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zealyug/home/home.dart';
-import 'package:zealyug/login/login_real.dart';
 import 'package:zealyug/otp_page/otp.dart';
 
 class SignUp extends StatelessWidget {
@@ -106,10 +105,10 @@ class SignUp extends StatelessWidget {
                         height: MediaQuery.of(context).size.height * 0.007,
                       ),
                       GestureDetector(
-                        onTap: () => {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (ctx) => Login()))
-                        },
+                        // onTap: () => {
+                        //   Navigator.push(context,
+                        //       MaterialPageRoute(builder: (ctx) => Login()))
+                        // },
                         child: Text(
                           "Sign In",
                           style: const TextStyle(
