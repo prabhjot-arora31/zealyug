@@ -16,20 +16,20 @@ class _AboutState extends State<About> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
+        leading: const BackButton(),
       ),
       body: Padding(
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         child: Column(children: [
-          Text(
+          const Text(
             "About",
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 25, letterSpacing: 2),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
-          Center(
+          const Center(
             child: Text(
               info,
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15),

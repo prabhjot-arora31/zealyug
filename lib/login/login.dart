@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:zealyug/signup/new_sign_up.dart';
-
 import 'package:zealyug/home/home.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:zealyug/signup/signup.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -33,17 +33,30 @@ class _LoginState extends State<Login> {
         padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            // mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SizedBox(
-                height: size.height / 8,
+                height: size.height / 18,
+              ),
+              Container(
+                width: double.infinity,
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: size.height / 24,
               ),
               Container(
                 height: size.width / 4,
                 width: size.width / 4,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.grey,
+                  color: Colors.white,
                   image: DecorationImage(
                     image: AssetImage('assets/images/logo.jpg'),
                     fit: BoxFit.cover,
@@ -62,7 +75,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: size.width / 1.15,
                 child: TextFormField(
-                controller: _emailController,
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     contentPadding: const EdgeInsets.symmetric(vertical: 18),
@@ -179,7 +192,8 @@ class _LoginState extends State<Login> {
                 height: size.height / 16,
                 child: ElevatedButton(
                   onPressed: () async {
-                    String api = "https://jealous-plum-twill.cyclic.app/api/login";
+                    String api =
+                        "https://jealous-plum-twill.cyclic.app/api/login";
                     var res = await http.post(
                       Uri.parse(api),
                       headers: {'Content-Type': 'application/json'},
@@ -188,12 +202,14 @@ class _LoginState extends State<Login> {
                         'password': _passwordController.text,
                       }),
                     );
-                    CircularProgressIndicator(color: Colors.blue,);
+                    const CircularProgressIndicator(
+                      color: Colors.blue,
+                    );
                     if (res.statusCode == 200) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SuccessSnackbar);
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (ctx) => Home()));
+                          MaterialPageRoute(builder: (ctx) => const Home()));
                       print("Login successful");
                     } else {
                       print("Login unsuccessfull");
@@ -259,21 +275,31 @@ class _LoginState extends State<Login> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      print("Google sign in");
+                      print("Apple sign in");
                     },
                     child: Container(
                       height: size.height / 16,
                       width: size.width / 5.5,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(10),
                         border:
                             Border.all(color: Colors.grey.shade200, width: 1),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Center(
-                          child: Image.asset('assets/images/google.png'),
+                        child: Flex(
+                          direction: Axis.horizontal,
+                          children: [
+                            Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
+                              child: Image.asset(
+                                'assets/images/google.png',
+                                width: size.width / 10,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -293,46 +319,77 @@ class _LoginState extends State<Login> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Center(
-                          child: Image.asset('assets/images/apple.png'),
+                        child: Flex(
+                          direction: Axis.horizontal,
+                          children: [
+                            Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
+                              child: Image.asset(
+                                'assets/images/apple.png',
+                                width: size.width / 10,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  // Container(
-                  //   height: size.height / 16,
-                  //   width: size.width / 5.5,
-                  //   decoration: BoxDecoration(
-                  //     color: Colors.white,
-                  //     borderRadius: BorderRadius.circular(10),
-                  //     border: Border.all(color: Colors.grey.shade200, width: 1),
-                  //   ),
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.all(12.0),
-                  //     child: Center(
-                  //       child: Image.asset('assets/images/facebook.png'),
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              ),
-              SizedBox(height: size.height / 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Don't have an account? "),
                   GestureDetector(
                     onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+                      print("Apple sign in");
                     },
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        color: Colors.blue.shade800,
+                    child: Container(
+                      height: size.height / 16,
+                      width: size.width / 5.5,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border:
+                            Border.all(color: Colors.grey.shade200, width: 1),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Flex(
+                          direction: Axis.horizontal,
+                          children: [
+                            Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
+                              child: Image.asset(
+                                'assets/images/facebook.png',
+                                width: size.width / 10,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ],
+              ),
+              SizedBox(height: size.height / 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignUp()),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text("Don't have an account?"),
+                    SizedBox(width: 5),
+                    Text(
+                      "Sign Up 😁",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

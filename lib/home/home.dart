@@ -30,23 +30,23 @@ class _HomeState extends State<Home> {
                 enabledBorder: OutlineInputBorder(
                     // borderRadius: BorderRadius.circular(10),
 
-                    borderSide: BorderSide(color: Colors.black, width: 3),
+                    borderSide: const BorderSide(color: Colors.black, width: 3),
                     borderRadius: BorderRadius.circular(20)),
                 iconColor: Colors.white,
                 hintText: "Search",
                 // prefixIcon: Icon(Icons.search),
                 prefixIconColor: Colors.white,
                 // fillColor: Colors.white,
-                hintStyle: TextStyle(color: Colors.white)),
+                hintStyle: const TextStyle(color: Colors.white)),
           ),
         ),
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (ctx) => Chats()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (ctx) => const Chats()));
               },
-              icon: Icon(Icons.message))
+              icon: const Icon(Icons.message))
         ],
         elevation: 0.0,
       ),
@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
         items: [
           BottomNavigationBarItem(
             icon: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.home,
                 color: Colors.white,
               ),
@@ -67,9 +67,9 @@ class _HomeState extends State<Home> {
             icon: IconButton(
               onPressed: () => {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => Notifications()))
+                    MaterialPageRoute(builder: (ctx) => const Notifications()))
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.notifications,
                 color: Colors.white,
               ),
@@ -79,10 +79,10 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: IconButton(
               onPressed: () => {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (ctx) => userProfile()))
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (ctx) => const userProfile()))
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.person,
                 color: Colors.white,
               ),
@@ -101,9 +101,9 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           Navigator.push(
-              context, MaterialPageRoute(builder: (ctx) => createPost()))
+              context, MaterialPageRoute(builder: (ctx) => const createPost()))
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       drawer: Drawer(
         child: Container(
@@ -113,8 +113,8 @@ class _HomeState extends State<Home> {
               GestureDetector(
                 onTap: () => {},
                 child: Container(
-                  padding: EdgeInsets.all(20),
-                  child: Center(
+                  padding: const EdgeInsets.all(20),
+                  child: const Center(
                     child: Text(
                       "ZealYug",
                       style: TextStyle(
@@ -128,10 +128,10 @@ class _HomeState extends State<Home> {
               ),
               GestureDetector(
                 onTap: () => {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (ctx) => zealYug()))
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => const zealYug()))
                 },
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(
                     Icons.info,
                     color: Colors.white,
@@ -144,10 +144,10 @@ class _HomeState extends State<Home> {
               ),
               GestureDetector(
                 onTap: () => {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (ctx) => Legal()))
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => const Legal()))
                 },
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(
                     Icons.info,
                     color: Colors.white,
@@ -159,8 +159,8 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(20),
-                child: Center(
+                padding: const EdgeInsets.all(20),
+                child: const Center(
                   child: Text(
                     "Contact Us",
                     style: TextStyle(
@@ -173,7 +173,7 @@ class _HomeState extends State<Home> {
               ),
               GestureDetector(
                 onTap: () => {print("printing")},
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(
                     Icons.email,
                     color: Colors.white,
@@ -185,7 +185,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
               GestureDetector(
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(
                     Icons.phone,
                     color: Colors.white,
@@ -197,7 +197,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
               GestureDetector(
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(
                     Icons.schedule,
                     color: Colors.white,
