@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zealyug/onboardings.dart/lists.dart';
+import 'package:zealyug/onboardings.dart/onboarding_sliders.dart';
 import 'package:zealyug/onboardings.dart/main_screen.dart';
-import 'package:zealyug/onboardings.dart/onboardscreens.dart';
+import 'package:zealyug/onboardings.dart/onboarding_screens.dart';
 
 void main() {
   runApp(const MyApp());
