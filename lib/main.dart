@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:zealyug/login/login.dart';
+<<<<<<< HEAD
 import 'package:zealyug/otp_page/otp.dart';
 import 'package:zealyug/signup/new_sign_up.dart';
 import 'package:zealyug/signup/sign_up_test.dart';
 
 import 'home/home.dart';
+=======
+import 'package:zealyug/onboardings.dart/main_screen.dart';
+>>>>>>> origin/master
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +43,11 @@ class _MyAppState extends State<MyApp> {
           overline: TextStyle(fontFamily: 'Lato', fontSize: 10.0),
         ),
       ),
+<<<<<<< HEAD
       home: Login(),
+=======
+      home: const OnboardingScreen(),
+>>>>>>> origin/master
     );
   }
 }

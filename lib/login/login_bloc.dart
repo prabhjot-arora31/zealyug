@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
@@ -42,3 +43,6 @@ class LoginBloc {
     _rememberMe.close();
   }
 }
+=======
+
+>>>>>>> origin/master
