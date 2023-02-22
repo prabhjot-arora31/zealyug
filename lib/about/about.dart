@@ -20,13 +20,8 @@ class _AboutState extends State<About> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(25),
-<<<<<<< HEAD
-        child: Column(children: const [
-          Text(
-=======
         child: Column(children: [
           const Text(
->>>>>>> origin/master
             "About",
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 25, letterSpacing: 2),
