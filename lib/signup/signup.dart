@@ -274,10 +274,10 @@ class _SignUpState extends State<SignUp> {
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Have an account?"),
-                    const SizedBox(width: 5),
-                    const Text(
+                  children: const [
+                    Text("Have an account?"),
+                    SizedBox(width: 5),
+                    Text(
                       " Login👋",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

@@ -20,13 +20,13 @@ class _NotificationsState extends State<Notifications> {
         items: [
           BottomNavigationBarItem(
             icon: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.home,
                 color: Colors.white,
               ),
               onPressed: () => {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (ctx) => Home()))
+                    context, MaterialPageRoute(builder: (ctx) => const Home()))
               },
             ),
             label: "",
@@ -35,9 +35,9 @@ class _NotificationsState extends State<Notifications> {
             icon: IconButton(
               onPressed: () => {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => Notifications()))
+                    MaterialPageRoute(builder: (ctx) => const Notifications()))
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.notifications,
                 color: Colors.white,
               ),
@@ -47,10 +47,10 @@ class _NotificationsState extends State<Notifications> {
           BottomNavigationBarItem(
             icon: IconButton(
               onPressed: () => {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (ctx) => userProfile()))
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (ctx) => const userProfile()))
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.person,
                 color: Colors.white,
               ),
@@ -63,7 +63,7 @@ class _NotificationsState extends State<Notifications> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: HexColor("#283B71"),
-        title: Text(
+        title: const Text(
           "Notifications",
           style: TextStyle(color: Colors.white),
         ),

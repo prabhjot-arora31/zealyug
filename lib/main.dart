@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:zealyug/login/login.dart';
+import 'package:flutter/services.dart';
+import 'package:zealyug/onboardings.dart/lists.dart';
 import 'package:zealyug/onboardings.dart/main_screen.dart';
+import 'package:zealyug/onboardings.dart/onboardscreens.dart';
 
 void main() {
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // transparent status bar
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -16,26 +22,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: const TextTheme(
-          bodyText1: TextStyle(fontFamily: 'Lato'),
-          bodyText2: TextStyle(fontFamily: 'Lato'),
-          headline1: TextStyle(fontFamily: 'Lato', fontSize: 28.0),
-          headline2: TextStyle(fontFamily: 'Lato', fontSize: 24.0),
-          headline3: TextStyle(fontFamily: 'Lato', fontSize: 20.0),
-          headline4: TextStyle(fontFamily: 'Lato', fontSize: 18.0),
-          headline5: TextStyle(fontFamily: 'Lato', fontSize: 16.0),
-          headline6: TextStyle(fontFamily: 'Lato', fontSize: 14.0),
-          subtitle1: TextStyle(fontFamily: 'Lato', fontSize: 16.0),
-          subtitle2: TextStyle(fontFamily: 'Lato', fontSize: 14.0),
-          button: TextStyle(fontFamily: 'Lato', fontSize: 16.0),
-          caption: TextStyle(fontFamily: 'Lato', fontSize: 12.0),
-          overline: TextStyle(fontFamily: 'Lato', fontSize: 10.0),
-        ),
-      ),
-      home: const OnboardingScreen(),
+      home: OnboardingSlider(),
     );
   }
 }
