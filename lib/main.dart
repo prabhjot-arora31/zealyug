@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zealyug/Expertise/expertise.dart';
 import 'package:zealyug/onboardings.dart/onboarding_sliders.dart';
 import 'package:zealyug/onboardings.dart/main_screen.dart';
 import 'package:zealyug/onboardings.dart/onboarding_screens.dart';
@@ -25,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Expertise(),
+      home: OnboardingSlider(),
     );
   }
 }
