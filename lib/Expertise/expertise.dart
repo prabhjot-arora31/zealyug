@@ -8,6 +8,17 @@ class Expertise extends StatefulWidget {
 }
 
 class _ExpertiseState extends State<Expertise> {
+  List<String> fields = [
+    'Accounting and finance',
+    'Architecture and Engineering',
+    'Information Technology and Software',
+    'Management and Consultancy',
+    'Media, Design, and Creatives',
+    "Sales and Marketing",
+    "Writing and Content",
+  ];
+  List<bool> values = [false, false, false, false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -16,10 +27,10 @@ class _ExpertiseState extends State<Expertise> {
         padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: size.height / 8,
+                height: size.height / 10,
               ),
               Text(
                 'What is Your Expertise?',
@@ -35,304 +46,34 @@ class _ExpertiseState extends State<Expertise> {
                   fontSize: size.width / 24,
                 ),
               ),
-              SizedBox(height: size.height * 0.034),
-              Divider(indent: 20,endIndent: 20,thickness: 1,),
-              // SizedBox(height: size.height / 100),
-              SizedBox(height: size.height * 0.034),
-              Row(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 0.5,color: Colors.grey),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Colors.purple.shade300,
-                          ),
-                          child: Checkbox(
-                            value: true,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: const BorderSide(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                // _rememberMe = value!;
-                              });
-                            },
-                          ),
-                        ),
-                         Text(
-                          'Accounting and finance',
-                          style: TextStyle(fontSize: size.width * 0.036),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              SizedBox(
+                height: size.height / 100,
               ),
-              SizedBox(height: size.height * 0.025),
-              Row(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 0.5,color: Colors.grey),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Colors.purple.shade300,
-                          ),
-                          child: Checkbox(
-                            value: true,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: const BorderSide(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                // _rememberMe = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Architecture and Engineering',
-                          style: TextStyle(fontSize: size.width * 0.036),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              const Divider(
+                indent: 20,
+                endIndent: 20,
+                thickness: 1,
               ),
-              SizedBox(height: size.height * 0.025),
-              Row(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 0.5,color: Colors.grey),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Colors.purple.shade300,
-                          ),
-                          child: Checkbox(
-                            value: true,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: const BorderSide(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                // _rememberMe = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Information Technology and Software',
-                          style: TextStyle(fontSize: size.width * 0.036),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              SizedBox(height: size.height * 0.001),
+              ListView.builder(
+                physics: ScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: fields.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return CheckBoxRow(
+                    text: fields[index],
+                    value: values[index],
+                    onChanged: (bool? value) {
+                      setState(() {
+                        values[index] = value!;
+                      });
+                    },
+                  );
+                },
               ),
-              SizedBox(height: size.height * 0.025),
-              Row(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 0.5,color: Colors.grey),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Colors.purple.shade300,
-                          ),
-                          child: Checkbox(
-                            value: true,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: const BorderSide(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                // _rememberMe = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Management and Consultancy',
-                          style: TextStyle(fontSize: size.width * 0.036),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: size.height * 0.025),
-              Row(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 0.5,color: Colors.grey),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Colors.purple.shade300,
-                          ),
-                          child: Checkbox(
-                            value: true,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: const BorderSide(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                // _rememberMe = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Media, Design, and Creatives',
-                          style: TextStyle(fontSize: size.width * 0.036),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: size.height * 0.025),
-              Row(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 0.5,color: Colors.grey),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Colors.purple.shade300,
-                          ),
-                          child: Checkbox(
-                            value: true,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: const BorderSide(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                // _rememberMe = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Sales and Marketing',
-                          style: TextStyle(fontSize: size.width * 0.036),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: size.height * 0.025),
-              Row(
-                children: [
-                  Container(
-                    width: size.width * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 0.5,color: Colors.grey),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Colors.purple.shade300,
-                          ),
-                          child: Checkbox(
-                            value: true,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: const BorderSide(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                // _rememberMe = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Writing and Content',
-                          style: TextStyle(fontSize: size.width * 0.036),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: size.height * 0.043),
+              SizedBox(
+                  height: size.height *
+                      0.03), // Add a gap of 2% of the screen height
               SizedBox(
                 width: size.width / 1.2,
                 height: size.height / 16,
@@ -348,13 +89,70 @@ class _ExpertiseState extends State<Expertise> {
                   child: const Text('Continue'),
                 ),
               ),
-              SizedBox(height: size.height / 40),
 
-              SizedBox(height: size.height / 20),
+              SizedBox(height: size.height / 40),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class CheckBoxRow extends StatelessWidget {
+  final String text;
+  final bool value;
+  final ValueChanged<bool?> onChanged;
+
+  const CheckBoxRow({
+    Key? key,
+    required this.text,
+    required this.value,
+    required this.onChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    return Row(
+      children: [
+        SizedBox(
+          height: size.height / 12,
+        ),
+        Container(
+          width: size.width * 0.9,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(width: 0.5, color: Colors.grey),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Theme(
+                data: ThemeData(
+                  unselectedWidgetColor: Colors.purple.shade300,
+                ),
+                child: Checkbox(
+                  value: value,
+                  activeColor: Colors.blue,
+                  checkColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    side: const BorderSide(
+                      color: Colors.deepPurpleAccent,
+                    ),
+                  ),
+                  onChanged: onChanged,
+                ),
+              ),
+              Text(
+                text,
+                style: TextStyle(fontSize: size.width * 0.036),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
