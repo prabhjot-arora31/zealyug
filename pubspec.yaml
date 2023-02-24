@@ -36,6 +36,8 @@ dependencies:
   flutter_bloc: ^8.1.2
   rxdart: ^0.27.7
   http: ^0.13.0
+  email_auth:
+  email_otp: "1.0.4"
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

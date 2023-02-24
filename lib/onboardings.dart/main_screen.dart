@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:zealyug/login/login.dart';
 import 'package:zealyug/signup/signup.dart';
 
 class OnboardingScreenMain extends StatelessWidget {
@@ -207,7 +208,9 @@ class OnboardingScreenMain extends StatelessWidget {
                 width: size.width / 1.3,
                 height: size.height / 18,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (ctx) => Login()));
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.deepPurple.shade300,
