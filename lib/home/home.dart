@@ -18,197 +18,370 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: HexColor("#283B71"),
-      appBar: AppBar(
-        backgroundColor: HexColor("#283B71"),
-        title: Container(
-          color: HexColor("#283B71"),
-          child: TextField(
-            // style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    // borderRadius: BorderRadius.circular(10),
-
-                    borderSide: const BorderSide(color: Colors.black, width: 3),
-                    borderRadius: BorderRadius.circular(20)),
-                iconColor: Colors.white,
-                hintText: "Search",
-                // prefixIcon: Icon(Icons.search),
-                prefixIconColor: Colors.white,
-                // fillColor: Colors.white,
-                hintStyle: const TextStyle(color: Colors.white)),
-          ),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => const Chats()));
-              },
-              icon: const Icon(Icons.message))
-        ],
-        elevation: 0.0,
-      ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: HexColor("#283B71"),
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: IconButton(
-              icon: const Icon(
-                Icons.home,
-                color: Colors.white,
-              ),
-              onPressed: () => {},
-            ),
-            label: "",
-          ),
+              icon: Icon(Icons.home, size: size.width / 15), label: "Home"),
           BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () => {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => const Notifications()))
-              },
-              icon: const Icon(
-                Icons.notifications,
-                color: Colors.white,
-              ),
-            ),
-            label: "",
-          ),
+              icon: Icon(Icons.save, size: size.width / 15),
+              label: "Saved Jobs"),
           BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () => {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => const userProfile()))
-              },
-              icon: const Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-            ),
-            label: "",
-          ),
+              icon: Icon(Icons.apple, size: size.width / 15),
+              label: "Application"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.message, size: size.width / 17),
+              label: "Message"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person, size: size.width / 15),
+              label: "Profile"),
         ],
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   shape: BeveledRectangleBorder(
-      //       borderRadius: BorderRadius.horizontal(
-      //           left: Radius.circular(5), right: Radius.circular(20))),
-      // onPressed: () => {},
-      // child: Row(children: [Icon(Icons.add), Text("Create post")]),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (ctx) => const createPost()))
-        },
-        child: const Icon(Icons.add),
-      ),
-      drawer: Drawer(
-        child: Container(
-          color: HexColor("#283B71"),
-          child: ListView(
-            children: [
-              GestureDetector(
-                onTap: () => {},
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: const Center(
-                    child: Text(
-                      "ZealYug",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            child: Text("User Profile"),
+                            minRadius: size.width / 15,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Good Morning 🖐️",
+                                style: TextStyle(fontSize: size.width / 25),
+                              ),
+                              SizedBox(
+                                height: size.height / 100,
+                              ),
+                              Text(
+                                "Andrew Ainsley",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: size.width / 20),
+                              )
+                            ],
+                          ),
+                        ],
                       ),
                     ),
+                    Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(color: Colors.grey.shade300)),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.notifications),
+                        )),
+                  ],
+                ),
+                SizedBox(
+                  height: size.height / 30,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search, color: Colors.grey.shade500),
+                    hintText: "Search for a job or company",
+                    hintStyle: TextStyle(color: Colors.grey.shade500),
+                    filled: true,
+                    suffixIcon: Icon(Icons.filter),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(size.width / 18),
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade200, width: 3)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(size.width / 18),
+                        borderSide: BorderSide(color: Colors.blue, width: 2)),
+                    // fillColor: Colors.grey.shade200
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (ctx) => const zealYug()))
-                },
-                child: const ListTile(
-                  leading: Icon(
-                    Icons.info,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Info",
-                    style: TextStyle(color: Colors.white),
+                SizedBox(
+                  height: size.height / 30,
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(18)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "See how you can",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: size.width / 24),
+                          ),
+                          Text(
+                            "find a job quickly!",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: size.width / 24),
+                          ),
+                          SizedBox(
+                            height: size.height / 40,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              print("Reading more");
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                  child: Text(
+                                    "Read more",
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                )),
+                          )
+                        ],
+                      ),
+                      Image.network(
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8CRlKWmwHGLIg8TKbJ_LPpmYPxZvC5Pw6Kg&usqp=CAU",
+                        width: size.width / 3,
+                        fit: BoxFit.contain,
+                      )
+                    ],
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (ctx) => const Legal()))
-                },
-                child: const ListTile(
-                  leading: Icon(
-                    Icons.info,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Legal",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                SizedBox(
+                  height: size.height / 30,
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: const Center(
-                  child: Text(
-                    "Contact Us",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Recommendation",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: size.width / 25),
                     ),
-                  ),
+                    GestureDetector(
+                      onTap: () {
+                        print("Watching all");
+                      },
+                      child: Text("See All",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: size.width / 25,
+                              color: Colors.blue)),
+                    )
+                  ],
                 ),
-              ),
-              GestureDetector(
-                onTap: () => {print("printing")},
-                child: const ListTile(
-                  leading: Icon(
-                    Icons.email,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "support@zealyug.com",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                SizedBox(
+                  height: size.height / 30,
                 ),
-              ),
-              GestureDetector(
-                child: const ListTile(
-                  leading: Icon(
-                    Icons.phone,
-                    color: Colors.white,
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(size.width / 20),
+                            border: Border.all(color: Colors.grey)),
+                        width: size.width * 0.70,
+                        // padding: EdgeInsets.all(15),
+                        padding: EdgeInsets.fromLTRB(15, 15, 0, 15),
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              child: Image.asset(
+                                "assets/images/google.jpg",
+                                width: size.width / 10,
+                              ),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "UI/UX Designer",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: size.width / 25),
+                                ),
+                                SizedBox(
+                                  height: size.height / 150,
+                                ),
+                                Text("Google LLC"),
+                                SizedBox(
+                                  height: size.height / 37,
+                                ),
+                                Text("California, United States",style: TextStyle(fontSize: size.width / 28),),
+                                SizedBox(
+                                  height: size.height / 150,
+                                ),
+                                Text(
+                                  "\$10,000-\$25,000 /month",style: TextStyle(fontWeight: FontWeight.w600,fontSize: size.width / 28,color: Colors.blue)
+                                ),
+                                SizedBox(
+                                  height: size.height / 150,
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(size.width / 70),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(
+                                          color: Colors.grey.shade600,)
+                                      ),
+                                      child: Text(
+                                        "Full Time",
+                                        style: TextStyle(
+                                          color: Colors.grey.shade600,
+                                            fontSize: size.width / 40),
+                                      ),
+                                    ),
+                                    SizedBox(width: size.width / 20,),
+                                    Container(
+                                      padding: EdgeInsets.all(size.width / 70),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5 ),
+                                          border: Border.all(
+                                            color: Colors.grey.shade600,)
+                                      ),
+                                      child: Text(
+                                        "Onsite",
+                                        style: TextStyle(
+                                            color: Colors.grey.shade600,
+                                            fontSize: size.width / 40),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.save,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: size.width / 20,),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius:
+                            BorderRadius.circular(size.width / 20),
+                            border: Border.all(color: Colors.grey)),
+                        width: size.width * 0.70,
+                        // padding: EdgeInsets.all(15),
+                        padding: EdgeInsets.fromLTRB(15, 15, 0, 15),
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              child: Image.asset(
+                                "assets/images/google.jpg",
+                                width: size.width / 10,
+                              ),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "UI/UX Designer",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: size.width / 25),
+                                ),
+                                SizedBox(
+                                  height: size.height / 150,
+                                ),
+                                Text("Google LLC"),
+                                SizedBox(
+                                  height: size.height / 37,
+                                ),
+                                Text("California, United States",style: TextStyle(fontSize: size.width / 28),),
+                                SizedBox(
+                                  height: size.height / 150,
+                                ),
+                                Text(
+                                    "\$10,000-\$25,000 /month",style: TextStyle(fontWeight: FontWeight.w600,fontSize: size.width / 28,color: Colors.blue)
+                                ),
+                                SizedBox(
+                                  height: size.height / 150,
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(size.width / 70),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          border: Border.all(
+                                            color: Colors.grey.shade600,)
+                                      ),
+                                      child: Text(
+                                        "Full Time",
+                                        style: TextStyle(
+                                            color: Colors.grey.shade600,
+                                            fontSize: size.width / 40),
+                                      ),
+                                    ),
+                                    SizedBox(width: size.width / 20,),
+                                    Container(
+                                      padding: EdgeInsets.all(size.width / 70),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5 ),
+                                          border: Border.all(
+                                            color: Colors.grey.shade600,)
+                                      ),
+                                      child: Text(
+                                        "Onsite",
+                                        style: TextStyle(
+                                            color: Colors.grey.shade600,
+                                            fontSize: size.width / 40),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.save,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  title: Text(
-                    "+91 0123456789",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                child: const ListTile(
-                  leading: Icon(
-                    Icons.schedule,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Schedule a call",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

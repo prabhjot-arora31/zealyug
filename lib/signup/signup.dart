@@ -18,9 +18,8 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-
-    TextEditingController otp1 = new TextEditingController();
-    EmailOTP myauth = EmailOTP();
+    TextEditingController otp = new TextEditingController();
+    EmailOTP myauth = new EmailOTP();
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -70,7 +69,6 @@ class _SignUpState extends State<SignUp> {
                 child: TextFormField(
                   controller: _email,
                   decoration: InputDecoration(
-
                     hintText: 'Email',
                     contentPadding: const EdgeInsets.symmetric(vertical: 18),
                     border: OutlineInputBorder(
@@ -184,18 +182,23 @@ class _SignUpState extends State<SignUp> {
                 width: size.width / 1.2,
                 height: size.height / 16,
                 child: ElevatedButton(
-                  onPressed: ()async {
+                  onPressed: () async {
                     myauth.setConfig(
-                      appEmail: "prabhjotarora99@gmail.com",
-                      appName: "ZealYug",
-                      userEmail: _email.text,
-                      otpLength: 6,
-                      otpType: OTPType.digitsOnly
-                    );
-                    if(await myauth.sendOTP() == true){
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("OTP has been sent")));
-                    } else{
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Oops. OTP send failed")));
+                        appEmail: "prabhjotarora99@gmail.com",
+                        appName: "ZealYug",
+                        userEmail: _email.text,
+                        otpLength: 6,
+                        otpType: OTPType.digitsOnly);
+                    if (await myauth.sendOTP() == true) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("OTP has been sent"),
+                        backgroundColor: Colors.green,
+                      ));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Oops. OTP send failed"),
+                        backgroundColor: Colors.red,
+                      ));
                     }
                     // Navigator.push(context, MaterialPageRoute(builder: (ctx)=> OTP(email: _email)));
                   },
@@ -208,65 +211,80 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               SizedBox(height: size.height / 20),
-              SizedBox(
-                width: size.width / 1.15,
-                child: TextFormField(
-                  controller: otp1,
-                  decoration: InputDecoration(
-                    hintText: 'OTP',
-                    contentPadding: const EdgeInsets.symmetric(vertical: 18),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        size.width / 18,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: size.width / 2.5,
+                    child: TextFormField(
+                      controller: otp,
+                      decoration: InputDecoration(
+                        hintText: 'OTP',
+                        contentPadding:
+                            const EdgeInsets.symmetric(vertical: 18),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            size.width / 18,
+                          ),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(size.width / 18),
+                          borderSide: const BorderSide(
+                            color: Colors.blue,
+                          ),
+                        ),
+                        prefixIcon: SizedBox(
+                          width: size.width / 20,
+                          height: size.height / 20,
+                          child: const Icon(Icons.lock, size: 18),
+                        ),
+                        filled: true,
+                        prefixStyle: const TextStyle(
+                          fontSize: 5,
+                        ),
+                        fillColor: Colors.grey.shade100,
                       ),
-                      borderSide: BorderSide.none,
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(size.width / 18),
-                      borderSide: const BorderSide(
-                        color: Colors.blue,
-                      ),
-                    ),
-                    prefixIcon: SizedBox(
-                      width: size.width / 20,
-                      height: size.height / 20,
-                      child: const Icon(Icons.lock, size: 18),
-                    ),
-                    filled: true,
-                    prefixStyle: const TextStyle(
-                      fontSize: 5,
-                    ),
-                    fillColor: Colors.grey.shade100,
                   ),
-                ),
+                  SizedBox(width: size.width / 15,),
+                  SizedBox(
+                    width: size.width / 3,
+                    height: size.height / 16,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        print(otp.text);
+                        if (await myauth.verifyOTP(otp: otp.text) == true) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("OTP is verified")));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (ctx) => createPassword()));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Invalid OTP")));
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
+                      child: const Text('Verify OTP'),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: size.height / 40),
 
               SizedBox(height: size.height / 100),
 
               SizedBox(height: size.height / 140),
+
               SizedBox(
-                width: size.width / 1.2,
-                height: size.height / 16,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    if(await myauth.verifyOTP(otp: otp1.text) == true){
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("OTP is verified")));
-                      Navigator.push(context, MaterialPageRoute(builder: (ctx)=> createPassword()));
-                    }
-                    else{
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Invalid OTP")));
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                  ),
-                  child: const Text('Verify OTP'),
-                ),
+                height: size.height * 0.03,
               ),
-              SizedBox(height: size.height * 0.03,),
               Row(
                 children: const <Widget>[
                   Flexible(

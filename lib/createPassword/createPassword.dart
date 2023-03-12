@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zealyug/FillProfile/fillProfile.dart';
+import 'package:zealyug/home/home.dart';
+import 'dart:async';
 
 class createPassword extends StatefulWidget {
   const createPassword({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class createPassword extends StatefulWidget {
 
 class _createPasswordState extends State<createPassword> {
   bool _showPassword = false;
+  bool _rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +27,23 @@ class _createPasswordState extends State<createPassword> {
               SizedBox(
                 height: size.height / 18,
               ),
-              Container(
-                width: double.infinity,
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+              Row(
+                children: [
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Text(
+                    "Create New Password",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: size.width / 20),
+                  )
+                ],
               ),
               SizedBox(
                 // height: size.height / 24,
@@ -51,11 +62,18 @@ class _createPasswordState extends State<createPassword> {
                 ),
               ),
               SizedBox(height: size.height / 25),
-              Text(
-                'Create Password',
-                style: TextStyle(
-                  fontSize: size.width / 14,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Create Your New Password",
+                      style: TextStyle(
+                          fontSize: size.width / 25,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: size.height / 30),
@@ -153,21 +171,65 @@ class _createPasswordState extends State<createPassword> {
                 ),
               ),
               SizedBox(height: size.height / 100),
-              SizedBox(height: size.height / 140),
+              Padding(
+                padding: const EdgeInsets.only(right: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Theme(
+                      data: ThemeData(
+                        unselectedWidgetColor: Colors.purple.shade300,
+                      ),
+                      child: Checkbox(
+                        value: _rememberMe,
+                        activeColor: Colors.blue,
+                        checkColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          side: const BorderSide(
+                            color: Colors.deepPurpleAccent,
+                          ),
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            _rememberMe = value!;
+                          });
+                        },
+                      ),
+                    ),
+                    const Text(
+                      'Remember me',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: size.height / 15,
+              ),
               SizedBox(
                 width: size.width / 1.2,
                 height: size.height / 16,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (ctx) => fillProfile()));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text(
+                              "Redirecting to the Home page!",),backgroundColor: Colors.green,),
+                    );
+                    Future.delayed(const Duration(milliseconds: 2000), () {
+                      setState(() {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (ctx) => Home()));
+                      });
+                    });
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(100),
                     ),
                   ),
-                  child: const Text('Set Password'),
+                  child: const Text('Continue'),
                 ),
               ),
             ],
